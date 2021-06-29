@@ -8,6 +8,7 @@
   "scripts": {
     "build": "node ./build.mjs",
     "watch": "node ./build.mjs --watch",
+    "relase": "yarn publish --access public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
