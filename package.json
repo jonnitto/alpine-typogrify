@@ -5,6 +5,10 @@
   "main": "dist/bundle/module.cjs",
   "module": "dist/bundle/module.mjs",
   "unpkg": "dist/bundle/cdn.min.js",
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "build": "node ./build.mjs",
     "watch": "node ./build.mjs --watch",
