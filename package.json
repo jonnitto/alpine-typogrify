@@ -1,5 +1,5 @@
 {
-  "name": "@alpinejs/typogrify",
+  "name": "alpine-typogrify",
   "version": "0.0.0",
   "description": "Typography utils for AlpineJS",
   "main": "dist/bundle/module.cjs",
