@@ -84,26 +84,15 @@ function smartypants(text) {
       lastChar = txt.slice(-1);
 
       if (!inPre) {
-        txt = smartEscapes(txt);
-        txt = smartDashes(txt);
-        txt = smartEllipses(txt);
+        txt = smartBackticks(smartEllipses(smartDashes(smartEscapes(txt))));
         // backticks need to be processed before quotes
-        txt = smartBackticks(txt);
         // quotes
         switch (txt) {
           case "'": // Special case: single-character ' token
-            if (/\S/.test(prevTokenLastChar)) {
-              txt = '&#8217;';
-            } else {
-              txt = '&#8216;';
-            }
+            txt = /\S/.test(prevTokenLastChar) ? '&#8217;' : '&#8216;';
             break;
           case '"': // Special case: single-character " token
-            if (/\S/.test(prevTokenLastChar)) {
-              txt = '&#8221;';
-            } else {
-              txt = '&#8220;';
-            }
+            txt = /\S/.test(prevTokenLastChar) ? '&#8221;' : '&#8220;';
             break;
           default:
             // Normal case

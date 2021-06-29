@@ -35,11 +35,7 @@ function ord(text, className) {
       result.push(token.txt);
 
       closeMatch = reSkipTags.exec(token.txt);
-      if (closeMatch && closeMatch[1] === undefined) {
-        inSkippedTag = true;
-      } else {
-        inSkippedTag = false;
-      }
+      inSkippedTag = closeMatch && closeMatch[1] === undefined;
     } else {
       if (inSkippedTag) {
         result.push(token.txt);

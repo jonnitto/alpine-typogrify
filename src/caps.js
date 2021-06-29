@@ -52,21 +52,17 @@ function caps(text, className) {
   tokenize(text).forEach(function (token) {
     if (token.type === 'tag') {
       result.push(token.txt);
-
       closeMatch = reSkipTags.exec(token.txt);
-      if (closeMatch && closeMatch[1] === undefined) {
-        inSkippedTag = true;
-      } else {
-        inSkippedTag = false;
-      }
+      inSkippedTag = closeMatch && closeMatch[1] === undefined;
     } else {
       if (inSkippedTag) {
         result.push(token.txt);
       } else {
         result.push(
-          token.txt.replace(reCap, function (matched_str, g1, g2, g3) {
+          token.txt.replace(reCap, function (matchedStr, g1, g2, g3) {
             // This is necessary to keep dotted cap strings to pick up extra spaces
-            var caps, tail;
+            let caps;
+            let tail;
             if (g2) {
               return `<span class="${className}">%s</span>`.replace('%s', g2);
             } else {

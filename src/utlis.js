@@ -10,23 +10,22 @@ function getClassName(className, modifier) {
 }
 
 function tokenize(text) {
-  var tokens = [],
-    lastIndex = 0,
-    re_tag = /([^<]*)(<[^>]*>)/gi,
-    curr_token;
+  let tokens = [];
+  let lastIndex = 0;
+  const reTag = /([^<]*)(<[^>]*>)/gi;
+  let currToken;
 
-  while ((curr_token = re_tag.exec(text)) !== null) {
-    var pre_text = curr_token[1],
-      tag_text = curr_token[2];
-
-    if (pre_text) {
-      tokens.push({ type: 'text', txt: pre_text });
+  while ((currToken = reTag.exec(text)) !== null) {
+    const preText = currToken[1];
+    const tagText = currToken[2];
+    if (preText) {
+      tokens.push({ type: 'text', txt: preText });
     }
-    tokens.push({ type: 'tag', txt: tag_text });
-    lastIndex = re_tag.lastIndex;
+    tokens.push({ type: 'tag', txt: tagText });
+    lastIndex = reTag.lastIndex;
   }
 
-  if (re_tag.lastIndex <= text.length) {
+  if (reTag.lastIndex <= text.length) {
     // if last char is a dot and not a '…'
     // then push two tokens
     if (text.slice(-1) == '.' && text.slice(-2) != '..') {

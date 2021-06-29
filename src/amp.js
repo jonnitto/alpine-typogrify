@@ -36,7 +36,9 @@ function amp(text, className) {
   return text.replace(reIntraTag, function (str, prefix, text, suffix) {
     prefix = prefix || '';
     suffix = suffix || '';
-    if (prefix.match(reSkipTags)) return prefix + text + suffix;
+    if (prefix.match(reSkipTags)) {
+      return prefix + text + suffix;
+    }
     text = text.replace(reAmp, `$1<span class="${className}">&amp;</span>$3`);
 
     return prefix + text + suffix;
