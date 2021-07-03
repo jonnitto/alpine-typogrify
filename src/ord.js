@@ -3,7 +3,7 @@ import { reSkipTags, tokenize, getClassName, isNotString } from './utlis';
 function directive(Alpine) {
   const mutateDom = Alpine.mutateDom;
   Alpine.directive('ord', (el, { expression }, { effect, evaluateLater }) => {
-    const evaluate = evaluateLater(expression);
+    const evaluate = evaluateLater(expression || null);
     const text = el.innerHTML;
     effect(() => {
       evaluate((value) => {
