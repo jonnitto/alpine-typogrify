@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>alpine-typogrify</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="dist/bundle/cdn.js" defer></script>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <script>
+      document.addEventListener('alpine:init', () => {
+        Alpine.data('example', (headline) => ({
+          content: `<h2>${headline}</h2>
+<h3>"Lorem ipsum" & dolor SIT amet</h3>
+<p>his viris "similique" appellantur C.U., pri at erat mandamus adversarium. 1st, 2nd, 3rd, 4th, "Alii eripuit utroque sit in, quem 'disputando' vel ex." Mea erant 'indoctum' ex IDS312, ad errem explicari...</p>`,
+        }));
+      });
+    </script>
+    <style>
+      *,
+      ::after,
+      ::before {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+          'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+          'Noto Color Emoji';
+        line-height: 1.5;
+        padding: 4rem 0;
+        background: #f9fafb;
+      }
+
+      h1,
+      h2,
+      h3,
+      p,
+      body {
+        margin: 0;
+        font-weight: inherit;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 1.875rem;
+        line-height: 2.25rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        line-height: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      h3 {
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+      }
+
+      a {
+        color: #dc2525;
+        text-decoration: none;
+      }
+
+      a:hover,
+      a:focus {
+        text-decoration: underline;
+      }
+
+      main {
+        width: 100%;
+        max-width: 1536px;
+        margin: 4rem auto 0;
+        display: grid;
+        gap: 1.5rem;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+      }
+
+      section {
+        background: #fff;
+        overflow: hidden;
+        isolation: isolate;
+        padding: 1.5rem;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+          0 1px 2px 0 rgba(0, 0, 0, 0.06);
+      }
+
+      @media (min-width: 640px) {
+        body {
+          padding: 4rem;
+        }
+
+        main {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        section {
+          border-radius: 0.5rem;
+        }
+      }
+
+      .typogrify--dquo {
+        color: #dc2525;
+        position: absolute;
+        margin: 0.25em 0 0 -0.15em;
+        z-index: -1;
+        font-family: ui-serif, Georgia, Cambria, Times New Roman, Times, serif;
+        font-size: 8em;
+        opacity: 0.3;
+      }
+
+      .typogrify--amp {
+        font-family: ui-serif, Georgia, Cambria, Times New Roman, Times, serif;
+        font-size: 1.5em;
+        font-style: italic;
+        opacity: 0.8;
+      }
+
+      .typogrify--caps {
+        font-size: 0.85em;
+        font-weight: 500;
+      }
+
+      .typogrify--ord {
+        position: relative;
+        vertical-align: baseline;
+        top: -0.4em;
+        font-size: 0.7em;
+      }
+    </style>
+  </head>
+
+  <body translate="no">
+    <h1>
+      This is an example of using
+      <a href="https://www.npmjs.com/package/alpine-typogrify">alpine-typogrify</a>
+    </h1>
+    <main>
+      <section x-data="example('Untypogrified')" x-html="content"></section>
+      <section x-data="example('x-typogrify')" x-html="content" x-typogrify ></section>
+      <section x-data="example('x-amp')" x-html="content" x-amp></section>
+      <section x-data="example('x-caps')" x-html="content" x-caps></section>
+      <section x-data="example('x-ord')" x-html="content" x-ord></section>
+      <section x-data="example('x-quotes')" x-html="content" x-quotes></section>
+      <section x-data="example('x-smartypants')" x-html="content" x-smartypants></section>
+      <section x-data="example('x-widont')" x-html="content" x-widont></section>
+    </main>
+  </body>
+</html>
