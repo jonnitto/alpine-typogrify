@@ -3,7 +3,7 @@ import { tokenize, regex, isNotString, reSkipTags } from './utlis';
 function directive(Alpine) {
   const mutateDom = Alpine.mutateDom;
   // eslint-disable-next-line no-empty-pattern
-  Alpine.directive('amp', (el, {}, { effect, evaluateLater }) => {
+  Alpine.directive('smartypants', (el, {}, { effect, evaluateLater }) => {
     const evaluate = evaluateLater();
     const text = el.innerHTML;
     effect(() => {
