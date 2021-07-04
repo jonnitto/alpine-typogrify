@@ -32,26 +32,22 @@ results to
 ```html
 <div x-data x-typogrify>
   <h3>
-    <span class="typogrify typogrify--quotes typogrify--dquo">“</span>Lorem
-    ipsum” <span class="typogrify typogrify--amp">&amp;</span> dolor
-    <span class="typogrify typogrify--caps">SIT</span
-    ><span class="typogrify typogrify--widont">&nbsp;</span>amet
+    <span class="typogrify typogrify--quotes typogrify--dquo">“</span>
+    Lorem ipsum” <span class="typogrify typogrify--amp">&amp;</span> dolor
+    <span class="typogrify typogrify--caps">SIT</span><span class="typogrify typogrify--widont">&nbsp;</span>amet
   </h3>
   <p>
     his viris “similique” appellantur cu,
-    <span class="typogrify typogrify--caps">P.R.I.</span> at erat mandamus
-    adversarium. 1<span class="typogrify typogrify--ord">st</span>, 2<span
-      class="typogrify typogrify--ord"
-      >nd</span
-    >, 3<span class="typogrify typogrify--ord">rd</span>, 4<span
-      class="typogrify typogrify--ord"
-      >th</span
-    >, “Alii eripuit utroque sit in, quem ‘disputando’ vel ex.” Mea erant
-    ‘indoctum’ ex <span class="typogrify typogrify--caps">IDS312</span>, ad
-    errem<span class="typogrify typogrify--widont">&nbsp;</span>explicari…
+    <span class="typogrify typogrify--caps">P.R.I.</span> at erat mandamus adversarium. 
+    1<span class="typogrify typogrify--ord">st</span>, 2<span class="typogrify typogrify--ord">nd</span>, 
+    3<span class="typogrify typogrify--ord">rd</span>, 4<span class="typogrify typogrify--ord">th</span>, 
+    “Alii eripuit utroque sit in, quem ‘disputando’ vel ex.” Mea erant ‘indoctum’ ex 
+    <span class="typogrify typogrify--caps">IDS312</span>, ad errem<span class="typogrify typogrify--widont">&nbsp;</span>explicari…
   </p>
 </div>
 ```
+
+[Take a look at the example file]
 
 # Directives
 
@@ -172,3 +168,4 @@ Applies all of the following filters, in order:
 [subscription]: https://github.com/Jonnitto/alpine-typogrify/subscription
 [alpine.js]: https://alpinejs.dev
 [typogr.js]: https://github.com/ekalinin/typogr.js/
+[take a look at the example file]: example.html
