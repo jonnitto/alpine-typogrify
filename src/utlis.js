@@ -5,8 +5,14 @@ function regex(regexp, flag) {
 // RegExp for skip some tags
 const reSkipTags = /<(\/)?(style|pre|code|kbd|script|math|title)[^>]*>/i;
 
-function getClassName(className, modifier) {
-  return className || `typogrify typogrify--${modifier}`;
+function getClassName(modifier) {
+  if (typeof modifier === 'string') {
+    modifier = [modifier];
+  }
+  return modifier.reduce(
+    (acc, curr) => `${acc} typogrify--${curr}`,
+    'typogrify'
+  );
 }
 
 function tokenize(text) {

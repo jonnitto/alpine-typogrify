@@ -30,7 +30,9 @@ function widont(text, className) {
   if (isNotString(text)) {
     return;
   }
-  className = getClassName(className, 'widont');
+  if (!className) {
+    className = widont.className;
+  }
   const inlineTags = 'a|em|span|strong|i|b';
   const word =
     '(?:<(?:' +
@@ -57,3 +59,4 @@ function widont(text, className) {
   );
   return text.replace(reWidont, `$1<span class="${className}">&nbsp;</span>$2`);
 }
+widont.className = getClassName('widont');

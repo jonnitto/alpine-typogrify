@@ -23,7 +23,9 @@ function ord(text, className) {
   if (isNotString(text)) {
     return;
   }
-  className = getClassName(className, 'ord');
+  if (!className) {
+    className = ord.className;
+  }
 
   const result = [];
   const reSuffix = /(\d+)(st|nd|rd|th)/g;
@@ -49,3 +51,4 @@ function ord(text, className) {
 
   return result.join('');
 }
+ord.className = getClassName('ord');

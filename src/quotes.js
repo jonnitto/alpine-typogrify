@@ -21,8 +21,8 @@ function directive(Alpine) {
 export { quotes, directive as default };
 
 /**
- * Wraps initial quotes in ``class="typogrify typogrify--dquo"`` for double quotes
- * or ``class="typogrify typogrify--quo"`` for single quotes. Works in these block
+ * Wraps initial quotes in ``class="typogrify typogrify--quotes typogrify--dquo"`` for double quotes
+ * or ``class="typogrify typogrify--quotes typogrify--quo"`` for single quotes. Works in these block
  * tags ``(h1-h6, p, li, dt, dd)`` and also accounts for potential opening inline
  * elements ``a, em, strong, span, b, i``
  */
@@ -44,9 +44,14 @@ function quotes(text, className) {
   );
 
   return text.replace(reQuote, function (matchedStr, dquo, squo) {
-    const classname = getClassName(className, dquo ? 'dquo' : 'quo');
+    const classname = className || quotes.className[dquo ? 'dquo' : 'quo'];
     const quote = dquo ? dquo : squo;
     const beforeQuote = matchedStr.slice(0, matchedStr.lastIndexOf(quote));
     return `${beforeQuote}<span class="${classname}">${quote}</span>`;
   });
 }
+
+quotes.className = {
+  dquo: getClassName(['quotes', 'dquo']),
+  squo: getClassName(['quotes', 'quo']),
+};

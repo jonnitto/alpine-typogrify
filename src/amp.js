@@ -26,7 +26,9 @@ function amp(text, className) {
   if (isNotString(text)) {
     return;
   }
-  className = getClassName(className, 'amp');
+  if (!className) {
+    className = amp.className;
+  }
 
   // (    $1   )(     $2       )(   $3    )
   const reAmp = /(\s|&nbsp;)(&|&amp;|&\#38;)(\s|&nbsp;)/g;
@@ -44,3 +46,4 @@ function amp(text, className) {
     return prefix + text + suffix;
   });
 }
+amp.className = getClassName("amp");

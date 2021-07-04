@@ -31,7 +31,9 @@ function caps(text, className) {
   if (isNotString(text)) {
     return;
   }
-  className = getClassName(className, 'caps');
+  if (!className) {
+        className = caps.className;
+    }
 
   const result = [];
   let inSkippedTag = false;
@@ -85,3 +87,4 @@ function caps(text, className) {
 
   return result.join('');
 }
+caps.className = getClassName("caps");
