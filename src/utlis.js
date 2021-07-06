@@ -15,6 +15,13 @@ function getClassName(modifier) {
   );
 }
 
+function wrapContent(content, className) {
+  if (!className) {
+    return content;
+  }
+  return `<span class="${className}">${content}</span>`;
+}
+
 function tokenize(text) {
   let tokens = [];
   let lastIndex = 0;
@@ -52,4 +59,4 @@ function isNotString(string) {
   return !string || typeof string !== 'string';
 }
 
-export { reSkipTags, regex, tokenize, getClassName, isNotString };
+export { reSkipTags, regex, tokenize, getClassName, isNotString, wrapContent };
