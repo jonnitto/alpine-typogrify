@@ -1,4 +1,10 @@
-import { reSkipTags, tokenize, getClassName, isNotString } from './utlis';
+import {
+  reSkipTags,
+  tokenize,
+  getClassName,
+  wrapContent,
+  isNotString,
+} from './utlis';
 
 function directive(Alpine) {
   const mutateDom = Alpine.mutateDom;
@@ -17,7 +23,7 @@ function directive(Alpine) {
 export { ord, directive as default };
 
 /**
- * Wraps date suffix in <span class="className"> so they can be styled with CSS.
+ * Wraps date suffix in <span class="typogrify typogrify--ord"> so they can be styled with CSS.
  */
 function ord(text, className) {
   if (isNotString(text)) {
@@ -25,6 +31,9 @@ function ord(text, className) {
   }
   if (!className) {
     className = ord.className;
+  }
+  if (!className) {
+    return text;
   }
 
   const result = [];
@@ -43,7 +52,7 @@ function ord(text, className) {
         result.push(token.txt);
       } else {
         result.push(
-          token.txt.replace(reSuffix, `$1<span class="${className}">$2</span>`)
+          token.txt.replace(reSuffix, `$1${wrapContent('$2', className)}`)
         );
       }
     }

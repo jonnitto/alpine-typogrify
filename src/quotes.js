@@ -1,4 +1,4 @@
-import { getClassName, isNotString, regex } from './utlis';
+import { getClassName, isNotString, wrapContent, regex } from './utlis';
 
 function directive(Alpine) {
   const mutateDom = Alpine.mutateDom;
@@ -31,6 +31,10 @@ function quotes(text, className) {
     return;
   }
 
+  if (!className && !quotes.className) {
+    return text;
+  }
+
   const reQuote = regex(
     '(?:(?:<(?:p|h[1-6]|li|dt|dd)[^>]*>|^)' + // start with an opening
       // p, h1-6, li, dd, dt
@@ -47,7 +51,7 @@ function quotes(text, className) {
     const classname = className || quotes.className[dquo ? 'dquo' : 'quo'];
     const quote = dquo ? dquo : squo;
     const beforeQuote = matchedStr.slice(0, matchedStr.lastIndexOf(quote));
-    return `${beforeQuote}<span class="${classname}">${quote}</span>`;
+    return beforeQuote + wrapContent(quote, classname);
   });
 }
 

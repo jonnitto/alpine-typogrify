@@ -3,6 +3,7 @@ import {
   regex,
   isNotString,
   getClassName,
+  wrapContent,
   reSkipTags,
 } from './utlis';
 
@@ -32,8 +33,11 @@ function caps(text, className) {
     return;
   }
   if (!className) {
-        className = caps.className;
-    }
+    className = caps.className;
+  }
+  if (!className) {
+    return text;
+  }
 
   const result = [];
   let inSkippedTag = false;
@@ -66,7 +70,7 @@ function caps(text, className) {
             let caps;
             let tail;
             if (g2) {
-              return `<span class="${className}">%s</span>`.replace('%s', g2);
+              return wrapContent(g2, className);
             } else {
               if (g3.slice(-1) === ' ') {
                 caps = g3.slice(0, -1);
@@ -75,9 +79,7 @@ function caps(text, className) {
                 caps = g3;
                 tail = '';
               }
-              return `<span class="${className}">%s1</span>%s2`
-                .replace('%s1', caps)
-                .replace('%s2', tail);
+              return wrapContent(caps, className) + tail;
             }
           })
         );
@@ -87,4 +89,4 @@ function caps(text, className) {
 
   return result.join('');
 }
-caps.className = getClassName("caps");
+caps.className = getClassName('caps');
