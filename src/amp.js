@@ -1,4 +1,4 @@
-import { reSkipTags, getClassName, isNotString } from './utlis';
+import { reSkipTags, getClassName, wrapContent, isNotString } from './utlis';
 
 function directive(Alpine) {
   const mutateDom = Alpine.mutateDom;
@@ -41,9 +41,9 @@ function amp(text, className) {
     if (prefix.match(reSkipTags)) {
       return prefix + text + suffix;
     }
-    text = text.replace(reAmp, `$1<span class="${className}">&amp;</span>$3`);
+    text = text.replace(reAmp, `$1${wrapContent('&amp;', className)}$3`);
 
     return prefix + text + suffix;
   });
 }
-amp.className = getClassName("amp");
+amp.className = getClassName('amp');

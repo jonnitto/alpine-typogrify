@@ -1,4 +1,4 @@
-import { getClassName, regex, isNotString } from './utlis';
+import { getClassName, wrapContent, regex, isNotString } from './utlis';
 
 function directive(Alpine) {
   const mutateDom = Alpine.mutateDom;
@@ -57,6 +57,6 @@ function widont(text, className) {
       ')',
     'gi'
   );
-  return text.replace(reWidont, `$1<span class="${className}">&nbsp;</span>$2`);
+  return text.replace(reWidont, `$1${wrapContent('&nbsp;', className)}$2`);
 }
 widont.className = getClassName('widont');
