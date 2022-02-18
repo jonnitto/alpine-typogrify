@@ -1,4 +1,4 @@
-[![npm version]][npm] [![David]][david-dm] [![GitHub stars]][stargazers] [![GitHub watchers]][subscription] [![GitHub license]][license] [![GitHub issues]][issues] [![GitHub forks]][network] [![Sponsor @Jonnitto on GitHub]][sponsor]
+[![npm version]][npm] [![GitHub stars]][stargazers] [![GitHub watchers]][subscription] [![GitHub license]][license] [![GitHub issues]][issues] [![GitHub forks]][network] [![Sponsor @Jonnitto on GitHub]][sponsor]
 
 # alpine-typogrify
 
@@ -152,8 +152,6 @@ Applies all of the following filters, in order:
 
 [npm version]: https://img.shields.io/npm/v/alpine-typogrify
 [npm]: https://www.npmjs.com/package/alpine-typogrify
-[david]: https://img.shields.io/david/dev/Jonnitto/alpine-typogrify?logo=npm
-[david-dm]: https://david-dm.org/Jonnitto/alpine-typogrify?type=dev
 [github issues]: https://img.shields.io/github/issues/Jonnitto/alpine-typogrify
 [issues]: https://github.com/Jonnitto/alpine-typogrify/issues
 [github forks]: https://img.shields.io/github/forks/Jonnitto/alpine-typogrify
